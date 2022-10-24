@@ -1,5 +1,5 @@
 {
-  "name": "exzipcompimg",
+  "name": "unimgzip",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/keiya/ExZipCompImg.git"
+    "url": "git+https://github.com/keiya/unimgzip.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/keiya/ExZipCompImg/issues"
+    "url": "https://github.com/keiya/unimgzip/issues"
   },
-  "homepage": "https://github.com/keiya/ExZipCompImg#readme",
+  "homepage": "https://github.com/keiya/unimgzip#readme",
   "devDependencies": {
     "@types/node": "^18.11.3",
     "@types/sharp": "^0.31.0",
