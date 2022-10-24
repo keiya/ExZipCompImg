@@ -155,7 +155,7 @@ export default class Convert {
     console.debug(`${this.totalBeforeSize} => ${this.totalAfterSize} (${this.totalAfterSize/this.totalBeforeSize})`)
     if (this.removeArchive) {
       // remove archive file (not directory)
-      await fs.promises.unlink(this.targetPath)
+      await fs.promises.rm(this.targetPath, { recursive: true, force: false })
     }
   }
 }
