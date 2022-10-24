@@ -153,9 +153,9 @@ export default class Convert {
     console.debug(`Processing directory: ${imagesDir}`)
     await this.processImagesInDir(imagesDir)
     console.debug(`${this.totalBeforeSize} => ${this.totalAfterSize} (${this.totalAfterSize/this.totalBeforeSize})`)
-    if (this.removeArchive) {
+    if (this.removeArchive && lstat.isFile()) {
       // remove archive file (not directory)
-      await fs.promises.rm(this.targetPath, { recursive: true, force: false })
+      await fs.promises.unlink(this.targetPath)
     }
   }
 }

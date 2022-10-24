@@ -36,7 +36,6 @@ yargs
   .normalize('targetPath')
   .parseAsync()
   .then((arg) => {
-    console.log(arg)
     const c = new Convert(arg)
     c.process()
   })

@@ -36,11 +36,20 @@ Only `.jpg` or `.png` files are converted.
   - `avif` (default)
   - `webp`
 - `-t NUM`: threads uses to conversion
-  - typically, **half of performance-cores** is good number.
+  - typically, **75% of total cores** or **half of performance-cores** is good number.
 
 ## Recursive processing with find
-Example: Extract all zip files in current directory (`.`) and convert these files to WebP, then remove zip files.
+### Example: Zip
+
+Extract all zip files in current directory (`.`) and convert these files to WebP, then remove zip files.
 
 ```
 find . -type f -name "*.zip" -exec node /path/to/dist/index.js -r -f webp {} \;
+```
+### Example: Zip & Folders
+
+Also convert all files in directories.
+
+```
+find . -type f -name "*.zip" -or -type d -exec node /path/to/dist/index.js -r -f webp {} \;
 ```
