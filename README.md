@@ -32,9 +32,11 @@ Only `.jpg` or `.png` files are converted.
 
 ### Option
 - `-r`: remove Zip after processed
-- `-f`: format
+- `-f FORMAT`: format
   - `avif` (default)
   - `webp`
+- `-t NUM`: threads uses to conversion
+  - typically, **half of performance-cores** is good number.
 
 ## Recursive processing with find
 Example: Extract all zip files in current directory (`.`) and convert these files to WebP, then remove zip files.

@@ -16,6 +16,7 @@ interface ArgOpt {
   format: string
   outdir: string
   targetPath: string
+  threads: number
 }
 
 const extRegex = /\.[\w\d]+$/
@@ -27,12 +28,14 @@ export default class Convert {
   private format: string
   private targetPath: string
   private dstDir?: string
+  private threads: number
 
   constructor(arg:Partial<ArgOpt>) {
     this.removeArchive = arg.removeArchive || false
     this.format = arg.format || 'avif'
     this.targetPath = (arg as any).targetPath
     this.dstDir = arg.outdir || undefined
+    this.threads = arg.threads || 1
   }
 
   async unpackSingle(targetFile: string, dstPath: string): Promise<UnpackSingleResult> {
@@ -113,7 +116,7 @@ export default class Convert {
   async processImagesInDir(targetDir: string) {
     const files = await this.readdirRecursively(targetDir)
     const promises: Promise<void>[] = []
-    const limit = pLimit(1);
+    const limit = pLimit(this.threads);
     files.forEach(fileName => {
       const extension = fileName.split(".").pop();
       switch (extension) {

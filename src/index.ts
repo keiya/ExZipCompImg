@@ -25,6 +25,13 @@ yargs
       demandOption: false,
       alias: "o",
     },
+    threads: {
+      type: "number",
+      describe: "Parallel conversion",
+      demandOption: false,
+      default: 1,
+      alias: "t",
+    },
   })
   .normalize('targetPath')
   .parseAsync()
