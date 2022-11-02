@@ -13,6 +13,7 @@ interface UnpackSingleResult {
 
 interface ArgOpt {
   removeArchive: boolean
+  effort: number
   format: string
   outdir: string
   targetPath: string
@@ -25,6 +26,7 @@ export default class Convert {
   private totalBeforeSize = 0
   private totalAfterSize = 0
   private removeArchive: boolean
+  private effort: number
   private format: string
   private targetPath: string
   private dstDir?: string
@@ -32,6 +34,7 @@ export default class Convert {
 
   constructor(arg:Partial<ArgOpt>) {
     this.removeArchive = arg.removeArchive || false
+    this.effort = arg.effort || 4
     this.format = arg.format || 'avif'
     this.targetPath = (arg as any).targetPath
     this.dstDir = arg.outdir || undefined
@@ -84,7 +87,7 @@ export default class Convert {
       await shrp.avif({
           quality: 50,
           lossless: false,
-          effort: 9,
+          effort: this.effort,
           chromaSubsampling: '4:4:4',
         })
         .toFile(convertedFileName)
@@ -92,7 +95,7 @@ export default class Convert {
       convertedFileName = `${originalFileName}.webp`
       await shrp.webp({
           quality: 75,
-          effort: 6,
+          effort: this.effort,
           smartSubsample: true,
         })
         .toFile(convertedFileName)

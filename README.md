@@ -32,11 +32,17 @@ Only `.jpg` or `.png` files are converted.
 
 ### Option
 - `-r`: remove Zip after processed
+- `-e NUM`: effort
+  - default: 4
+  - to reduce size, specify larger number (slower)
+  - valid range:
+    - WebP: `1`-`6`
+    - AVIF: `1`-`9`
 - `-f FORMAT`: format
   - `avif` (default)
   - `webp`
 - `-t NUM`: threads uses to conversion
-  - typically, **75% of total cores** or **half of performance-cores** is good number.
+  - default: 1
 
 ## Recursive processing with find
 ### Example: Zip

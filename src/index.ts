@@ -12,6 +12,13 @@ yargs
       default: false,
       alias: "r",
     },
+    effort: {
+      type: "number",
+      describe: "Compression effort",
+      demandOption: false,
+      default: 4,
+      alias: "e",
+    },
     format: {
       type: "string",
       describe: "Specify format",
